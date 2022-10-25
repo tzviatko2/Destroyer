@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+  </head>
+  <body>
+    <script>
+    export class GameApplication extends PIXI.Application {
+
+ static STAGE_WIDTH = 800;
+ static STAGE_HEIGHT = 600;
+
+ static app;
+ mainContainer;
+
+constructor() {
+    super(GameApplication.getAppOptions());
+    this.init();
+}
+
+ static getApp() {
+    return this.app;
+}
+
+ init() {
+    GameApplication.app = this;
+    this.mainContainer = new PIXI.Container();
+    this.loader = new PIXI.Loader();
+    this.loader.onComplete.add(this.onLoadComplete, this);
+
+    window.onload = () => {
+        const gameContainer = document.getElementById("gameContainer");
+        gameContainer.appendChild(this.view);
+        this.stage.addChild(this.mainContainer);
+
+        this.resizeCanvas();
+        this.loadAssets();
+        this.showText();
+        this.createButton();
+        this.createContainers();
+
+        this.view.style.position = 'absolute';
+        this.view.style.left = '50%';
+        this.view.style.top = '50%';
+        this.view.style.transform = 'translate3d( -50%, -50%, 0 )';
+    };
+}
+
+static getAppOptions() {
+    return {
+        backgroundColor: 0x989c99,
+        width: GameApplication.STAGE_WIDTH,
+        height: GameApplication.STAGE_HEIGHT,
+    }
+}
+
+ resizeCanvas()  {
+    this.onResize();
+
+    window.addEventListener('resize', this.onResize);
+}
+
+onResize() {
+    this.renderer.resize(GameApplication.STAGE_WIDTH, GameApplication.STAGE_HEIGHT);
+}
+
+loadAssets() {
+
+    // Load sunshine image
+
+    // Load siren
+
+}
+
+showText() {
+    // show some text
+
+}
+
+createContainers() {
+
+}
+
+createButton() {
+    
+}
+
+onLoadComplete() {
+
+}
+
+}
+
+    </script>
+  </body>
+</html>
